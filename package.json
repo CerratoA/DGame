@@ -10,6 +10,7 @@
     "preview": "bunx --bun vite preview"
   },
   "dependencies": {
+    "antd": "^5.9.4",
     "grid-engine": "^2.37.0",
     "lodash": "^4.17.21",
     "phaser": "^3.60.0",

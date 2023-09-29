@@ -1,67 +1,56 @@
-import { useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
-
-import { GridEngine } from "grid-engine";
-import { AUTO, Scale, Game as PhaserGame } from "phaser";
-
-import { UI } from "./ui/UI";
-import BootScene from "./scenes/BootScene";
-import WorldScene from "./scenes/WorldScene";
-import BattleScene from "./scenes/BattleScene";
-import { GAME_HEIGHT, GAME_WIDTH } from "./constants/game";
-
 import "./styles.css";
-import { Loading } from "./ui/components/Loading";
-import { useUIStore } from "./stores/ui";
+import { Layout } from "antd";
+import { Content, Footer, Header } from "antd/es/layout/layout";
+import { Navbar } from "./components/Navbar/Navbar";
+import { useWindowSize } from "./ui/hooks/useWindowSize";
+import { NotAvailablePage } from "./components/NotAvailable";
+import { ContentBox } from "./components/ContentBox/ContentBox";
 
-export const GameComponent = () => {
-  const [game, setGame] = useState<PhaserGame>(null);
-  const { loading } = useUIStore();
+const LayoutStyle: React.CSSProperties = {
+  height: '100%',
+  backgroundColor: 'transparent',
+};
 
-  useEffect(() => {
-    setGame(
-      new PhaserGame({
-        parent: "game",
-        type: AUTO,
-        width: GAME_WIDTH,
-        height: GAME_HEIGHT,
-        scale: {
-          mode: Scale.FIT,
-          autoCenter: Scale.CENTER_BOTH,
-        },
-        scene: [BootScene, WorldScene, BattleScene],
-        physics: {
-          default: "arcade",
-          arcade: {
-            gravity: { y: 0 },
-            debug: true,
-          },
-        },
-        plugins: {
-          scene: [
-            {
-              key: "gridEngine",
-              plugin: GridEngine,
-              mapping: "gridEngine",
-            },
-          ],
-        },
-        pixelArt: true,
-      }),
-    );
-  }, []);
+const headerStyle: React.CSSProperties = {
+  color: '#fff',
+  height: 100,
+  paddingInline: 50,
+  lineHeight: '64px',
+  backgroundColor: 'transparent',
+  borderBottom: '1px #851A80 solid'
+};
 
-  if (!game) {
-    return null;
+const contentStyle: React.CSSProperties = {
+  minHeight: 120,
+  lineHeight: '120px',
+  color: '#fff',
+  backgroundColor: 'transparent',
+};
+
+const footerStyle: React.CSSProperties = {
+  color: '#fff',
+  backgroundColor: '#130033',
+};
+
+export const App = () => {
+  const windowSize = useWindowSize();
+
+  // Define the width limit to classify as 'narrow'
+  const NARROW_WIDTH = 768; // e.g., for tablets and below
+
+  if (windowSize.width <= NARROW_WIDTH) {
+    return <NotAvailablePage />;
   }
-
   return (
-    <>
-      {loading && <Loading />}
-      <UI game={game} />
-      <div id="game" />
-    </>
+    <div className="main-page-bg">
+      <Layout style={LayoutStyle}>
+      <Header style={headerStyle}><Navbar /></Header>
+      <Content style={contentStyle}><ContentBox /></Content>
+      <Footer style={footerStyle}>Footer</Footer>
+    </Layout>
+    </div>
   );
 };
 
-ReactDOM.createRoot(document.getElementById("root")!).render(<GameComponent />);
+ReactDOM.createRoot(document.getElementById("root")!).render(<App />);
