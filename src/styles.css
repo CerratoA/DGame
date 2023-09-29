@@ -215,6 +215,19 @@ div.hovered label {
   overflow: hidden;
 }
 
+/* Font Import */
+@font-face {
+  font-family: 'Bai Jamjuree';
+  src: var(--custom-font-path) format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: 'Bai Jamjuree', sans-serif;
+}
+
+
 /* Custom Styles */
 
 .main-page-bg {
@@ -225,3 +238,23 @@ div.hovered label {
 
 /* ANTD Custom */
 
+.customScrollBar {
+  /* ... other styles ... */
+
+  scrollbar-width: thin;
+  scrollbar-color: rgba(155, 155, 155, 0.7) transparent;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: rgba(155, 155, 155, 0.7);
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(125, 125, 125, 0.8);
+  }
+}

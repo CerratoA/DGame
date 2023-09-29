@@ -10,6 +10,9 @@ const defaultStyles: React.CSSProperties = {
   fontSize: '14px',
   color: 'white',
   marginBottom: '0px',
+  fontWeight: 400,
+  lineHeight: '22px',
+  fontFamily: 'Bai Jamjuree',
 };
 
 export const Text: React.FC<TextProps> = ({ children, style }) => {
