@@ -37,7 +37,7 @@ export const App = () => {
   const windowSize = useWindowSize();
 
   // Define the width limit to classify as 'narrow'
-  const NARROW_WIDTH = 768; // e.g., for tablets and below
+  const NARROW_WIDTH = 900; // e.g., for tablets and below
 
   if (windowSize.width <= NARROW_WIDTH) {
     return <NotAvailablePage />;

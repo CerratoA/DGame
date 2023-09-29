@@ -10,6 +10,7 @@
     "preview": "bunx --bun vite preview"
   },
   "dependencies": {
+    "@ant-design/icons": "^5.2.6",
     "antd": "^5.9.4",
     "grid-engine": "^2.37.0",
     "lodash": "^4.17.21",

@@ -1,10 +1,11 @@
 import { Col, Row } from "antd"
+import { Banner } from "./Banner/Banner"
 
 export const ContentBox = () => {
   return (
-    <Row>
+    <Row >
       <Col span={24}>
-        <Row>Banner</Row>
+        <Banner />
         <Row>Content</Row>
       </Col>
     </Row>
