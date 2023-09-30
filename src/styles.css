@@ -238,6 +238,11 @@ body {
 
 /* ANTD Custom */
 
+.ant-form-item .ant-form-item-label >label{
+  color: #fff;
+  font-family: 'Bai Jamjuree', sans-serif;
+}
+
 .customScrollBar {
   /* ... other styles ... */
 
