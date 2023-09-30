@@ -1,8 +1,10 @@
 import { create } from "zustand";
 import { devtools } from "zustand/middleware";
 
+export type FilterMaps = 'all' | 'mine';
 interface UIStore {
   loading: boolean;
+  filterMyMaps: FilterMaps;
   dialog: {
     isOpen: boolean;
     callback?: (selectedChoice?: string) => void;
@@ -25,12 +27,14 @@ interface UIStore {
   closeDialog: () => void;
   toggleMenu: () => void;
   toggleBattle: () => void;
+  changeFilterMyMaps: (filterMyMaps: FilterMaps) => void;
   set: (fn: (state: UIStore) => UIStore) => void;
 }
 
 export const useUIStore = create<UIStore>()(
   devtools((set) => ({
     loading: true,
+    filterMyMaps: 'all',
     dialog: {
       isOpen: false,
       callback: undefined,
@@ -45,6 +49,7 @@ export const useUIStore = create<UIStore>()(
       isOpen: false,
     },
     setLoading: (loading) => set(() => ({ loading })),
+    changeFilterMyMaps: (filterMyMaps) => set(()=> ({ filterMyMaps })),
     toggleDialog: (content, choices, callback) =>
       set((state) => ({
         dialog: {

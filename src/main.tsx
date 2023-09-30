@@ -1,6 +1,6 @@
 import ReactDOM from "react-dom/client";
 import "./styles.css";
-import { Layout } from "antd";
+import { Layout, ConfigProvider } from "antd";
 import { Content, Footer, Header } from "antd/es/layout/layout";
 import { Navbar } from "./components/Navbar/Navbar";
 import { useWindowSize } from "./ui/hooks/useWindowSize";
@@ -36,6 +36,18 @@ const footerStyle: React.CSSProperties = {
   zIndex: 10,
 };
 
+const ProviderTheme = {
+  components: {
+    Menu: {
+      itemColor: "#fff",
+      itemBg: "transparent",
+      itemHoverColor: "#fff",
+      horizontalItemSelectedColor: "#fff",
+      fontSize: "20px",
+    },
+  },
+}
+
 export const App = () => {
   const windowSize = useWindowSize();
 
@@ -60,13 +72,19 @@ export const App = () => {
   }
   return (
     <div className="main-page-bg">
-      <Layout style={LayoutStyle}>
-        <Header style={headerStyle}><Navbar /></Header>
-        <Content style={contentStyle}><ContentBox /></Content>
-        <Footer style={footerStyle}>Copyright © 2023 DEGA</Footer>
-      </Layout>
+      <ConfigProvider
+        theme={ProviderTheme}
+      >
+        <Layout style={LayoutStyle}>
+          <Header style={headerStyle}><Navbar /></Header>
+          <Content style={contentStyle}><ContentBox /></Content>
+          <Footer style={footerStyle}>Copyright © 2023 DEGA</Footer>
+        </Layout>
+      </ConfigProvider>
     </div>
   );
 };
+
+
 
 ReactDOM.createRoot(document.getElementById("root")!).render(<App />);
