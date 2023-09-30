@@ -4,19 +4,10 @@ import { FilterMaps, useUIStore } from "../../stores/ui";
 import { Button } from "../Button/Button";
 import { useEffect, useState } from "react";
 
-
-const items: MenuProps['items'] = [
-  {
-    label: 'ALL',
-    key: 'all',
-  }
-];
-
 export const Navbar = () => {
   const { filterMyMaps, changeFilterMyMaps, isWalletConnected, setWalletConnected } = useUIStore();
   const [items, setItems] = useState<MenuProps['items']>([]); // [] is the initial value
   
-
   useEffect(() => {
     if(isWalletConnected) {
       console.log('Wallet connected');

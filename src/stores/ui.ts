@@ -58,7 +58,7 @@ export const useUIStore = create<UIStore>()(
       isOpen: false,
     },
     setLoading: (loading) => set(() => ({ loading })),
-    changeFilterMyMaps: (filterMyMaps) => set(() => ({ filterMyMaps })),
+    changeFilterMyMaps: (filterMyMaps) => set(() => ({ filterMyMaps, isCreationViewOpen: false })),
     // setWalletConnected: (connected)=> set(()=> ({isWalletConnected: connected})),
     setWalletConnected: (connected) =>
       set(() => ({

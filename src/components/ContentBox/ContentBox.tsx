@@ -4,6 +4,7 @@ import { MapItem } from "../MapItem/MapItem"
 import { useEffect, useState } from "react"
 import { useUIStore } from "../../stores/ui";
 import { Button } from "../Button/Button";
+import { CreateMap } from "../CreateMap/CreateMap";
 
 const exampleImg = 'https://picsum.photos/300/300';
 
@@ -26,7 +27,7 @@ const mapContainerStyle: React.CSSProperties = {
   overflowY: 'auto',
 };
 
-export const ContentBox = () => {
+export const MapList = () => {
   const [maps, setMaps] = useState(null);
   const { filterMyMaps, isWalletConnected, setCreateMapView } = useUIStore();
 
@@ -72,4 +73,12 @@ export const ContentBox = () => {
       </Col>
     </Row>
   )
+}
+
+export const ContentBox = () => {
+  const { isCreationViewOpen } = useUIStore();
+  if (isCreationViewOpen) {
+    return <CreateMap />
+  }
+  return <MapList />
 }
