@@ -5,7 +5,6 @@ import { Text } from "../Text/Text";
 const bannerStyle: React.CSSProperties = {
   background: 'linear-gradient(0deg, #17002C 0%, #17002C 100%)',
   height: 120,
-  marginBottom: 50,
 };
 
 const purpleButtonStyle: React.CSSProperties = {
