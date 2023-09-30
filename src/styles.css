@@ -274,6 +274,19 @@ body {
   color: rgba(155, 155, 155, 0.7);
 }
 
+/* completed step */
+.ant-steps .ant-steps-item-finish .ant-steps-item-icon {
+  background: #7B158C;
+  border-color: #7B158C;
+}
+.ant-steps .ant-steps-item-finish .ant-steps-item-icon >.ant-steps-icon {
+  color: white;
+}
+
+.ant-steps .ant-steps-item-finish>.ant-steps-item-container>.ant-steps-item-content>.ant-steps-item-title {
+  color: white;
+}
+
 .customScrollBar {
   /* ... other styles ... */
 

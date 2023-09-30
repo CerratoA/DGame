@@ -11,13 +11,6 @@ interface StepsProgressProps {
   status: CreateMapStatus;
 }
 
-const StepsProgressStyles: React.CSSProperties = {
-    color: '#FFFFFF',
-    fontSize: '18px',
-    fontWeight: 'bold',
-    lineHeight: '24px',
-}
-
 export const StepsProgress: React.FC<StepsProgressProps> = ({ status }) => {
   // Define the steps based on the enum
   const steps = Object.values(CreateMapStatus).map(status => ({ title: status }));

@@ -93,8 +93,10 @@ export const CreateMap = () => {
             )}
           </Form.List>
           <Form.Item >
-            <Button type="primary" block style={ContinueButtonStyle}>Create</Button>
-            <Button block>Delete</Button>
+            <Button type="primary" onClick={handleCreateMap} block style={ContinueButtonStyle}>Create</Button>
+            { status === CreateMapStatus.CREATED &&
+              <Button block>Delete</Button>
+            }
           </Form.Item>
         </Form>
       </Col>
