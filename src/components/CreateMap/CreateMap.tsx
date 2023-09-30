@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Row, Col, Form, Input, Upload, Button, Space } from 'antd';
 import { UploadOutlined, MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
+import { StepsProgress, CreateMapStatus } from './StepsProgress';
 
 const FormInputStyles: React.CSSProperties = {
   borderRadius: '10.92px',
@@ -18,9 +19,8 @@ const ContinueButtonStyle = {
   marginBottom: '10px',
 };
 
-
 export const CreateMap = () => {
-  const [status, setStatus] = useState('editing');
+  const [status, setStatus] = useState(CreateMapStatus.EDIT);
   const [imagePreview, setImagePreview] = useState(null);
   const [form] = Form.useForm();
 
@@ -33,6 +33,20 @@ export const CreateMap = () => {
     };
   };
 
+  const handleCreateMap = () => {
+    const values = form.getFieldsValue();
+    console.log('values', values);
+    // TODO: call API to create map
+    setStatus(CreateMapStatus.CREATED);
+  }
+
+  const handlePublishMap = () => {
+    const values = form.getFieldsValue();
+    console.log('values', values);
+    // TODO: call API to publish map
+    setStatus(CreateMapStatus.PUBLISHED);
+  }
+
   return (
     <Row style={{ padding: '50px 70px' }} gutter={16}>
       <Col style={{ paddingRight: 40, borderRight: '2px #959595 solid' }} span={10}>
@@ -41,7 +55,7 @@ export const CreateMap = () => {
           layout="vertical"
         >
           <Form.Item label="Name" name="name">
-            <Input placeholder="Enter map name" />
+            <Input style={FormInputStyles} placeholder="Enter map name" />
           </Form.Item>
           
           <Form.Item label="Image" name="image">
@@ -63,12 +77,11 @@ export const CreateMap = () => {
                     <Form.Item
                       {...restField}
                       name={[name, 'attribute']}
-                      fieldKey={[fieldKey, 'attribute']}
                       rules={[{ required: true, message: 'Missing attribute' }]}
                     >
-                      <Input placeholder="Attribute" />
+                      <Input style={FormInputStyles} placeholder="Attribute" />
                     </Form.Item>
-                    <MinusCircleOutlined onClick={() => remove(name)} />
+                    <MinusCircleOutlined style={{color:'white'}} onClick={() => remove(name)} />
                   </Space>
                 ))}
                 <Form.Item>
@@ -86,13 +99,8 @@ export const CreateMap = () => {
         </Form>
       </Col>
       <Col style={{ paddingLeft: 40 }} span={14}>
-        <div>
-          <span>1 Editing</span>
-          <span> --- </span>
-          <span>2 Created</span>
-          <span> --- </span>
-          <span>3 Published</span>
-        </div>
+        <StepsProgress status={status} />
+
         {imagePreview && <img src={imagePreview} alt="preview" style={{ width: '100%', margin: '10px 0' }} />}
         <div>Name: {form.getFieldValue('name')}</div>
         <div>

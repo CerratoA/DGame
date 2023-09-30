@@ -238,9 +238,40 @@ body {
 
 /* ANTD Custom */
 
+/* CreateMap Labels style */
 .ant-form-item .ant-form-item-label >label{
   color: #fff;
   font-family: 'Bai Jamjuree', sans-serif;
+}
+
+/* CreateMap Steps style */
+
+.steps-progress.ant-steps-item-content > div {
+  color: white;
+}
+
+.ant-steps .ant-steps-item-process .ant-steps-item-icon {
+  background: #7B158C;
+  border-color: #7B158C;
+}
+
+.ant-steps .ant-steps-item-process>.ant-steps-item-container>.ant-steps-item-content>.ant-steps-item-title {
+  color: white;
+}
+
+/* Grey steps */
+.ant-steps .ant-steps-item-wait>.ant-steps-item-container>.ant-steps-item-content>.ant-steps-item-title {
+  color: rgba(155, 155, 155, 0.7);
+}
+
+.ant-steps .ant-steps-item-wait .ant-steps-item-icon {
+  background: transparent;
+  border-color: #7B158C;
+  color: rgba(155, 155, 155, 0.7);
+}
+
+.ant-steps .ant-steps-item-wait .ant-steps-item-icon >.ant-steps-icon {
+  color: rgba(155, 155, 155, 0.7);
 }
 
 .customScrollBar {
