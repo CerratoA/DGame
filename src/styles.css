@@ -287,6 +287,21 @@ body {
   color: white;
 }
 
+/* Modal */
+.ant-modal .ant-modal-content {
+  color: #fff;
+  background: linear-gradient(180deg, #03000A 0%, #0A0020 66%); 
+}
+
+.ant-modal .ant-modal-header, .ant-modal .ant-modal-title {
+  color: #fff;
+  background-color: transparent;
+}
+
+.ant-modal-close-x {
+  color: white;
+}
+
 .customScrollBar {
   /* ... other styles ... */
 

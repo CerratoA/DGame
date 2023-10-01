@@ -8,13 +8,7 @@ interface UIStore {
   isWalletConnected: boolean;
   wallet: any | null;
   isCreationViewOpen: boolean;
-  dialog: {
-    isOpen: boolean;
-    callback?: (selectedChoice?: string) => void;
-    steps: string[];
-    currentStepIndex: number;
-    choices?: string[];
-  };
+  isDialogOpen: boolean;
   menu: {
     isOpen: boolean;
   };
@@ -22,12 +16,8 @@ interface UIStore {
     isOpen: boolean;
   };
   setLoading: (loading: boolean) => void;
-  toggleDialog: (
-    content?: string,
-    choices?: string[],
-    callback?: (selectedChoice?: string) => void,
-  ) => void;
   closeDialog: () => void;
+  openDialog: (isOpen: boolean) => void;
   toggleMenu: () => void;
   toggleBattle: () => void;
   changeFilterMyMaps: (filterMyMaps: FilterMaps) => void;
@@ -44,13 +34,7 @@ export const useUIStore = create<UIStore>()(
     isWalletConnected: false,
     wallet: null,
     isCreationViewOpen: false,
-    dialog: {
-      isOpen: false,
-      callback: undefined,
-      steps: [],
-      currentStepIndex: 0,
-      choices: [],
-    },
+    isDialogOpen: false,
     menu: {
       isOpen: false,
     },
@@ -67,27 +51,12 @@ export const useUIStore = create<UIStore>()(
         isCreationViewOpen: false
       })),
     setWallet: (wallet) => set(() => ({ wallet })),
-    setCreateMapView: (active) => set(()=> ({isCreationViewOpen: active})),
-    toggleDialog: (content, choices, callback) =>
-      set((state) => ({
-        dialog: {
-          isOpen: !state.dialog.isOpen,
-          callback,
-          steps: content?.split(";") ?? [],
-          currentStepIndex: 0,
-          choices,
-        },
-      })),
+    setCreateMapView: (active) => set(() => ({ isCreationViewOpen: active })),
     closeDialog: () =>
       set(() => ({
-        dialog: {
-          isOpen: false,
-          callback: undefined,
-          steps: [],
-          currentStepIndex: 0,
-          choices: [],
-        },
+        isDialogOpen: false,
       })),
+    openDialog: (isOpen) => set(() => ({ isDialogOpen: isOpen })),
     toggleMenu: () =>
       set((state) => ({
         menu: {

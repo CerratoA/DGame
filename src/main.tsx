@@ -1,6 +1,6 @@
 import ReactDOM from "react-dom/client";
 import "./styles.css";
-import { Layout, ConfigProvider } from "antd";
+import { Layout, ConfigProvider, ThemeConfig } from "antd";
 import { Content, Footer, Header } from "antd/es/layout/layout";
 import { Navbar } from "./components/Navbar/Navbar";
 import { useWindowSize } from "./ui/hooks/useWindowSize";
@@ -36,14 +36,13 @@ const footerStyle: React.CSSProperties = {
   zIndex: 10,
 };
 
-const ProviderTheme = {
+const ProviderTheme: ThemeConfig = {
   components: {
     Menu: {
       itemColor: "#fff",
       itemBg: "transparent",
       itemHoverColor: "#fff",
       horizontalItemSelectedColor: "#fff",
-      fontSize: "20px",
     },
   },
 }
