@@ -160,16 +160,6 @@ export const CreateMap = () => {
         <Input value={price} disabled />
 
         <Label>Realm</Label>
-        {/* <Select
-          value={selectedRealm}
-          onChange={setSelectedRealm}
-        >
-          {realms.map(realm => (
-            <Select.Option key={realm} value={realm}>
-              {realm}
-            </Select.Option>
-          ))}
-        </Select> */}
         <Select value={selectedRealm} onChange={setSelectedRealm} options={realms.map((realm) => ({ value: realm, label: realm }))} />
       </Dialog>
     </>
