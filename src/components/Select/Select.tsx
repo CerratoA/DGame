@@ -12,7 +12,7 @@ type OptionType = {
 };
 
 type SelectProps = {
-  value?: string;
+  value?: string | number;
   onChange?: (value: string) => void;
   options: OptionType[];
   style?: React.CSSProperties;
